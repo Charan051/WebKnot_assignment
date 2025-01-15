@@ -1,26 +1,7 @@
-// const express = require("express");
-// const router = express.Router();
-// const Attendee = require("../models/Attende");
-
-// router.get("/", async (req, res) => {
-//   const { eventId } = req.query;
-//   const attendees = await Attendee.find({ eventId });
-//   res.json(attendees);
-// });
-
-// router.post("/", async (req, res) => {
-//   const attendee = new Attendee(req.body);
-//   await attendee.save();
-//   res.status(201).json(attendee);
-// });
-
-// module.exports = router;
-
 const express = require("express");
 const router = express.Router();
 const Attendee = require("../models/Attende");
 
-// Get attendees for a specific event
 router.get("/", async (req, res) => {
   const { eventId } = req.query;
   try {
@@ -31,7 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Create a new attendee
 router.post("/", async (req, res) => {
   const attendee = new Attendee(req.body);
   try {
@@ -42,7 +22,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Update an attendee's details (e.g., name)
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
@@ -54,7 +33,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Delete an attendee
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

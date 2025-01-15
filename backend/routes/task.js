@@ -1,10 +1,7 @@
-
-
 const express = require("express");
 const router = express.Router();
 const Task = require("../models/Tasks");
 
-// Get tasks for a specific event
 router.get("/", async (req, res) => {
   const { eventId } = req.query;
   try {
@@ -15,7 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Create a new task
 router.post("/", async (req, res) => {
   const task = new Task(req.body);
   try {
@@ -26,7 +22,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Update a task's details (e.g., name or status)
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, status, deadline } = req.body;
@@ -38,7 +33,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Toggle task status (In Progress / Completed)
 router.put("/status/:id", async (req, res) => {
     const { id } = req.params;
     try {
@@ -49,12 +43,12 @@ router.put("/status/:id", async (req, res) => {
       const newStatus = task.status === "Pending" ? "Completed" : "Pending";
       task.status = newStatus;
       await task.save();
-      res.json(task); // Return the updated task object
+      res.json(task); 
     } catch (err) {
       res.status(500).json({ error: "Error toggling task status" });
     }
   });
-// Delete a task
+
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

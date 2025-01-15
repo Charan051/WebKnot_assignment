@@ -1,27 +1,9 @@
-// const express = require("express");
-// const router = express.Router();
-// const Event = require("../models/Events");
-
-// router.get("/", async (req, res) => {
-//   const events = await Event.find();
-//   res.json(events);
-// });
-
-// router.post("/", async (req, res) => {
-//   const event = new Event(req.body);
-//   await event.save();
-//   res.status(201).json(event);
-// });
-
-// module.exports = router;
-
 const express = require("express");
 const router = express.Router();
 const Event = require("../models/Events");
 const Attendee = require("../models/Attende");
 const Task = require("../models/Tasks");
 
-// Get all events
 router.get("/", async (req, res) => {
   try {
     const events = await Event.find();
@@ -31,7 +13,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Create a new event
 router.post("/", async (req, res) => {
   try {
     const event = new Event(req.body);
@@ -42,7 +23,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Edit an event
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, description, location, date } = req.body;
@@ -62,18 +42,17 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Delete an event and cascade delete related attendees and tasks
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Delete attendees related to the event
+    
     await Attendee.deleteMany({ eventId: id });
 
-    // Delete tasks related to the event
+  
     await Task.deleteMany({ eventId: id });
 
-    // Delete the event
+   
     const deletedEvent = await Event.findByIdAndDelete(id);
 
     if (!deletedEvent) {

@@ -29,7 +29,7 @@ const Signup = () => {
         }
       );
       localStorage.setItem('token', response.data.token); 
-      navigate('/event');
+      navigate('/events');
     } catch (e) {
       const errorMessage = e.response?.data?.error || 'Something went wrong, please try again later.';
       setError(errorMessage);

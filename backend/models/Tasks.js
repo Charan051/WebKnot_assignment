@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const taskSchema = new mongoose.Schema({
+const Schema = new mongoose.Schema({
   name: { type: String, required: true },
   deadline: { type: Date, required: true },
   status: { type: String, enum: ["Pending", "Completed"], default: "Pending" },
@@ -8,4 +8,4 @@ const taskSchema = new mongoose.Schema({
   eventId: { type: mongoose.Schema.Types.ObjectId, ref: "Event", required: true },
 });
 
-module.exports = mongoose.model("Task", taskSchema);
+module.exports = mongoose.model("Task", Schema);

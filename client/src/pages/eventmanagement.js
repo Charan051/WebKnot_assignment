@@ -3,7 +3,7 @@ import axios from "axios";
 import CalendarComponent from "../components/CalendarComponent";
 import EventForm from "../components/EventForm";
 import EventDetails from "../components/EventDetails";
-import Popup from "../components/Popup"; // Import Popup component
+import Popup from "../components/Popup"; 
 
 function EventManagement() {
   const [events, setEvents] = useState([]);
@@ -15,11 +15,9 @@ function EventManagement() {
   const [newAttendee, setNewAttendee] = useState("");
   const [popupVisible, setPopupVisible] = useState(false);
   const [form, setForm] = useState({ name: "", description: "", location: "" });
-
-  // State for editing attendee and task
   const [editingAttendee, setEditingAttendee] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
-  const [popupType, setPopupType] = useState(""); // "attendee", "task", or "event"
+  const [popupType, setPopupType] = useState(""); 
 
   useEffect(() => {
     fetchEvents();
@@ -63,7 +61,7 @@ function EventManagement() {
     try {
       await axios.post("http://localhost:5000/api/event", newEvent);
       fetchEvents();
-      setPopupVisible(false); // Close the popup after adding the event
+      setPopupVisible(false); 
     } catch (error) {
       console.error("Error adding event:", error);
     }
@@ -77,7 +75,7 @@ function EventManagement() {
       fetchAttendees(eventOnDate._id);
       fetchTasks(eventOnDate._id);
     } else {
-      setSelectedEvent(null); // Clear selected event if no event for that day
+      setSelectedEvent(null); 
     }
   };
 
@@ -97,7 +95,7 @@ function EventManagement() {
       return;
     }
     try {
-      const newStatus = task.status === "Pending" ? "Completed" : "Pending"; // Toggle status
+      const newStatus = task.status === "Pending" ? "Completed" : "Pending"; 
 
       const response = await axios.put(
         `http://localhost:5000/api/task/status/${task._id}`,

@@ -1,5 +1,5 @@
 import React from "react";
-import EventForm from "./EventForm"; // import EventForm component
+import EventForm from "./EventForm"; 
 
 const Popup = ({
   popupType,
@@ -19,10 +19,10 @@ const Popup = ({
   setEditingAttendee,
   setEditingTask,
   editingTask,
-  form, // Add form props for EventForm
-  setForm, // Add setForm props for EventForm
-  handleAddEvent, // Add handleAddEvent for EventForm
-  selectedDate, // Add selectedDate for EventForm
+  form, 
+  setForm, 
+  handleAddEvent, 
+  selectedDate, 
 }) => {
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
@@ -43,13 +43,13 @@ const Popup = ({
             <button
               onClick={() => {
                 if (editingAttendee) {
-                  handleEditAttendee(); // Edit attendee
+                  handleEditAttendee(); 
                 } else {
-                  handleAddAttendee(); // Add new attendee
+                  handleAddAttendee(); 
                 }
-                setNewAttendee(""); // Clear input
-                setEditingAttendee(false); // Reset editing state
-                setPopupVisible(false); // Close popup
+                setNewAttendee(""); 
+                setEditingAttendee(false); 
+                setPopupVisible(false); 
               }}
               className="bg-green-500 text-white px-4 py-2 rounded mt-4"
             >
@@ -58,10 +58,10 @@ const Popup = ({
             {editingAttendee && (
               <button
                 onClick={() => {
-                  handleDeleteAttendee(); // Delete attendee
-                  setNewAttendee(""); // Clear input
-                  setEditingAttendee(false); // Reset editing state
-                  setPopupVisible(false); // Close popup
+                  handleDeleteAttendee(); 
+                  setNewAttendee(""); 
+                  setEditingAttendee(false);
+                  setPopupVisible(false); 
                 }}
                 className="bg-red-500 text-white px-4 py-2 rounded mt-4"
               >
@@ -110,13 +110,13 @@ const Popup = ({
             <button
               onClick={() => {
                 if (editingTask) {
-                  handleEditTask(); // Edit task
+                  handleEditTask(); 
                 } else {
-                  handleAddTask(); // Add new task
+                  handleAddTask(); 
                 }
-                setPopupVisible(false); // Close popup
+                setPopupVisible(false); 
                 setNewTask({ name: "", deadline: "", assignedAttendee: "" });
-                setEditingTask(false) // Clear task input fields
+                setEditingTask(false) 
               }}
               className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
             >
@@ -126,8 +126,8 @@ const Popup = ({
             {editingTask && (
               <button
                 onClick={() => {
-                  handleToggleTaskStatus(); // Toggle task status
-                  setPopupVisible(false); // Close popup
+                  handleToggleTaskStatus(); 
+                  setPopupVisible(false); 
                 }}
                 className="bg-yellow-500 text-white px-4 py-2 rounded mt-4"
               >

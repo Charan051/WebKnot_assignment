@@ -18,7 +18,7 @@ const Login= ()=>{
         try{
             const response = await axios.post('http://localhost:5000/api/auth/login', formData);
             localStorage.setItem('token', response.data.token); 
-            navigate('/event');
+            navigate('/events');
         }catch (e) {
             const errorMessage = e.response?.data?.error || 'Something went wrong, please try again later.';
             seterror(errorMessage);
