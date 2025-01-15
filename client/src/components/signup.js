@@ -24,12 +24,12 @@ const Signup = () => {
         formData,
         {
           headers: {
-            'Content-Type': 'application/json', // Ensure the correct header is set
+            'Content-Type': 'application/json', 
           },
         }
       );
-      localStorage.setItem('token', response.data.token); // Store token in local storage
-      navigate('/dashboard');
+      localStorage.setItem('token', response.data.token); 
+      navigate('/event');
     } catch (e) {
       const errorMessage = e.response?.data?.error || 'Something went wrong, please try again later.';
       setError(errorMessage);

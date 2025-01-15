@@ -17,16 +17,15 @@ const Login= ()=>{
         e.preventDefault();
         try{
             const response = await axios.post('http://localhost:5000/api/auth/login', formData);
-            localStorage.setItem('token', response.data.token); // Store token in local storage
-            navigate('/dashboard');
+            localStorage.setItem('token', response.data.token); 
+            navigate('/event');
         }catch (e) {
-            // If the error comes from the backend, display the error message
             const errorMessage = e.response?.data?.error || 'Something went wrong, please try again later.';
             seterror(errorMessage);
         }
     };
     const goToSignup = () => {
-        navigate('/signup'); // Navigate to the signup page
+        navigate('/signup'); 
       };
     return(
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
