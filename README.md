@@ -37,7 +37,7 @@ The **Wenknot Assignment** is an event management system designed to handle the 
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/wenknot-assignment.git
+    git clone https://github.com/Charan051/WenKnot_assignment.git
     cd wenknot-assignment
     ```
 
